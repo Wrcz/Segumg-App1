@@ -5,6 +5,6 @@
     <title>Inicio de sesión</title>
   </head>
   <body>
-
+<?php echo "<h1>Prueba</h1>" ?>
   </body>
 </html>
