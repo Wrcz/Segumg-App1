@@ -5,7 +5,7 @@
 <title>discussdesk.com - Login form in PHP mysql</title>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<link href="/Css/Style_Login.css" rel="stylesheet" type="text/css">
+<link href="Css/Style_Login.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
