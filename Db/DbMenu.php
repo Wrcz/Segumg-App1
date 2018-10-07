@@ -12,8 +12,8 @@ if(isset($_SESSION['Id']))
        try
        {
            //$conn = OpenConnection();
-           $tsql = "select c.* from usuarios a inner join Perfil_MenuOpciones b on a.CodigoPerfil=b.CodigoPerfil inner join MenuOpciones c on c.idObjetoMenu=b.IdObjetoMenu where a.IdUsuario=' $id ' COLLATE SQL_Latin1_General_CP1_CS_AS order by orden";
-           $params = array();
+           $tsql = "select c.* from usuarios a inner join Perfil_MenuOpciones b on a.CodigoPerfil=b.CodigoPerfil inner join MenuOpciones c on c.idObjetoMenu=b.IdObjetoMenu where a.IdUsuario=? COLLATE SQL_Latin1_General_CP1_CS_AS order by orden";
+           $params = array($id);
            $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
            $getmenu = sqlsrv_query($conn, $tsql,$params,$options);
 

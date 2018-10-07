@@ -18,8 +18,8 @@ else {
        try
        {
            //$conn = OpenConnection();
-           $tsql = "SELECT * FROM usuarios WHERE correoelectronico = '$name ' AND CONVERT(VARCHAR(MAX), DECRYPTBYPASSPHRASE('segumg18', contrasenia)) = '$password' COLLATE SQL_Latin1_General_CP1_CS_AS";
-           $params = array();
+           $tsql = "SELECT * FROM usuarios WHERE correoelectronico = ? AND CONVERT(VARCHAR(MAX), DECRYPTBYPASSPHRASE('segumg18', contrasenia)) = ? COLLATE SQL_Latin1_General_CP1_CS_AS";
+           $params = array($name,$password);
            $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
            $getuser = sqlsrv_query($conn, $tsql,$params,$options);
 
