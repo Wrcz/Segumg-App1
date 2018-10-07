@@ -1,5 +1,6 @@
 <?php
 include('DbConnection.php');
+session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 if (isset($_POST["name"]))
@@ -31,10 +32,11 @@ else {
 
             if ($usercount===1)
             {
-              session_start();
+
               $_SESSION['name']=$row['NombreUsuario'];
               $_SESSION['email']=$row['CorreoElectronico'];
               $_SESSION['Id']=$row['IdUsuario'];
+              $_SESSION['perfil']=$row['CodigoPerfil'];
               header("location: ../Paginas/Menu.php");
              }
                 else
@@ -43,6 +45,7 @@ else {
               $_SESSION['name']=NULL;
               $_SESSION['email']=NULL;
               $_SESSION['Id']=NULL;
+                $_SESSION['perfil']=NULL;
                session_destroy();
               header("location: ../Paginas/Login.php");
             }

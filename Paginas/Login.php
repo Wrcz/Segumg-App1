@@ -1,4 +1,26 @@
 
+<?php
+// Inicializar la sesión.
+// Si está usando session_name("algo"), ¡no lo olvide ahora!
+session_start();
+
+// Destruir todas las variables de sesión.
+$_SESSION = array();
+
+// Si se desea destruir la sesión completamente, borre también la cookie de sesión.
+// Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Finalmente, destruir la sesión.
+session_destroy();
+
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,12 +47,12 @@
     					Iniciar Sesión
     				</span>
 
-    				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+    				<div class="wrap-input100 validate-input m-b-20" data-validate="Ingrese correo electrónico">
     					<input class="input100" type="text" name="name" placeholder="correo electrónico" id="name">
     					<span class="focus-input100"></span>
     				</div>
 
-    				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+    				<div class="wrap-input100 validate-input m-b-25" data-validate = "Ingrese la contraseña">
     					<input class="input100" type="password" name="password" placeholder="contraseña" id="password">
     					<span class="focus-input100"></span>
     				</div>
