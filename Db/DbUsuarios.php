@@ -1,5 +1,5 @@
 <?php
-include('DbConnection.php');
+include_once('DbConnection.php');
 session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,6 +15,8 @@ else {
  $password="";
 }
 
+    $Cls_Conn= new Conexion();
+    $conn=$Cls_Conn->DevuelveConexion();
        try
        {
            //$conn = OpenConnection();
@@ -24,7 +26,7 @@ else {
            $getuser = sqlsrv_query($conn, $tsql,$params,$options);
 
            if ($getuser == FALSE)
-               die(FormatErrors(sqlsrv_errors()));
+                die( print_r( sqlsrv_errors(), true));
 
           $row = sqlsrv_fetch_array($getuser,SQLSRV_FETCH_ASSOC);
            $usercount = sqlsrv_num_rows($getuser);

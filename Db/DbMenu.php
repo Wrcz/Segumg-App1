@@ -1,5 +1,5 @@
 <?php
-include('DbConnection.php');
+include_once('DbConnection.php');
 
 $id=0;
 $perfil=0;
@@ -11,6 +11,9 @@ if(isset($_SESSION['Id']))
 
        try
        {
+         $Cls_Conn= new Conexion();
+         $conn=$Cls_Conn->DevuelveConexion();
+
            //$conn = OpenConnection();
            $tsql = "select c.* from usuarios a inner join Perfil_MenuOpciones b on a.CodigoPerfil=b.CodigoPerfil inner join MenuOpciones c on c.idObjetoMenu=b.IdObjetoMenu where a.IdUsuario=? COLLATE SQL_Latin1_General_CP1_CS_AS order by orden";
            $params = array($id);
@@ -18,7 +21,7 @@ if(isset($_SESSION['Id']))
            $getmenu = sqlsrv_query($conn, $tsql,$params,$options);
 
            if ($getmenu == FALSE)
-               die(FormatErrors(sqlsrv_errors()));
+                 die( print_r( sqlsrv_errors(), true));
 
         //  $row = sqlsrv_fetch_array($getmenu,SQLSRV_FETCH_ASSOC);
         //   $usercount = sqlsrv_num_rows($getmenu);

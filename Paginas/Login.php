@@ -79,11 +79,11 @@ session_destroy();
     					</a>
     				</div>
 
-    				<div class="text-center">
+    			<!--	<div class="text-center">
     					<a href="#" class="txt2 hov1">
     						Registrarse
     					</a>
-    				</div>
+    				</div>-->
     			</form>
     		</div>
 
