@@ -1,5 +1,6 @@
 
 <?php
+  include("master.php");
 // Inicializar la sesión.
 // Si está usando session_name("algo"), ¡no lo olvide ahora!
 session_start();
@@ -36,10 +37,7 @@ session_destroy();
 <body>
 
 	<form name="Frm_Login"action="../Db/DbUsuarios.php" method="post" >
-      <?php
-      include("master.php"); ?>
-
-
+    
     		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 
     			<form class="login100-form validate-form">

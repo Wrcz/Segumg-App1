@@ -1,5 +1,6 @@
 <?php
-include("master.php");
+$BASEURL="../";
+
 require_once '../Clases/Empleado_Ent.php';
 require_once '../Db/DbEmpleados.php';
 
@@ -27,10 +28,10 @@ if(isset($_REQUEST['action']))
 	{
 
 		case 'actualizar':
-			$Empl->__SET('id',              $_REQUEST['id']);
-			$Empl->__SET('nombre',          $_REQUEST['nombre']);
-			$Empl->__SET('departamento',        $_REQUEST['departamento']);
-			$Empl->__SET('puesto',            $_REQUEST['puesto']);
+			$Empl->__SET('id',  $_REQUEST['id']);
+			$Empl->__SET('nombre',$_REQUEST['nombre']);
+			$Empl->__SET('departamento',$_REQUEST['departamento']);
+			$Empl->__SET('puesto', $_REQUEST['puesto']);
 			$Empl->__SET('fechaingreso', $_REQUEST['fechaingreso']);
       $Empl->__SET('direccion', $_REQUEST['direccion']);
       $Empl->__SET('telefonocasa', $_REQUEST['telefonocasa']);
@@ -43,9 +44,9 @@ if(isset($_REQUEST['action']))
 			break;
 
 		case 'registrar':
-    $Empl->__SET('nombre',          $_REQUEST['nombre']);
-    $Empl->__SET('departamento',        $_REQUEST['departamento']);
-    $Empl->__SET('puesto',            $_REQUEST['puesto']);
+    $Empl->__SET('nombre',  $_REQUEST['nombre']);
+    $Empl->__SET('departamento',$_REQUEST['departamento']);
+    $Empl->__SET('puesto', $_REQUEST['puesto']);
     $Empl->__SET('fechaingreso', $_REQUEST['fechaingreso']);
     $Empl->__SET('direccion', $_REQUEST['direccion']);
     $Empl->__SET('telefonocasa', $_REQUEST['telefonocasa']);
@@ -55,7 +56,7 @@ if(isset($_REQUEST['action']))
 
 			$Empl_db->registrar($Empl);
 			header('Location: Empleados.php');
-			break;
+  		break;
 
 		case 'eliminar':
 			$Empl_db->eliminar($_REQUEST['id']);
@@ -67,8 +68,6 @@ if(isset($_REQUEST['action']))
 			break;
 	}
 }
-
-
  ?>
 
 <!DOCTYPE html>
@@ -77,21 +76,21 @@ if(isset($_REQUEST['action']))
     <meta charset="utf-8">
     <title>Mantenimiento de Empleados</title>
      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+      <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/responsivetables2.css";?>>
        <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body >
-
-<div class="wrap-man100">
+<?php include("master.php"); ?>
 <span class="login100-form-title p-b-37"> Mantenimiento de Empleados </span>
-<div class="pure-g">
- <div class="pure-u-1-12">
 
-   <form  action="?action=<?php echo $Empl->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post" class="pure-form  pure-form-stacked " style="margin-bottom:10px;">
+   <form  action="?action=<?php echo $Empl->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post"  style="margin-bottom:10px;">
                      <input type="hidden" name="id" value="<?php echo $Empl->__GET('id'); ?>" />
-                     <table style="width:1300px;">
+
+                     <table class="rwd-table" >
                          <tr>
-                             <th style="text-align:left;" >Nombre</th>
-                             <td><input type="text" name="nombre"  style="width:90%;" value="<?php echo $Empl->__GET('nombre'); ?>" /></td>
+                             <th >Nombre</th>
+                             <td><input type="text" name="nombre"   value="<?php echo $Empl->__GET('nombre'); ?>" /></td>
 
                              <th >Departamento</th>
                              <td><input type="text" name="departamento" value="<?php echo $Empl->__GET('departamento'); ?>"  /></td>
@@ -103,8 +102,8 @@ if(isset($_REQUEST['action']))
                              <td><input type="text" name="fechaingreso"  value="<?php echo $Empl->__GET('fechaingreso'); ?>"  /></td>
                            </tr>
                            <tr>
-                             <th style="text-align:left;" >Dirección</th>
-                             <td><input type="text" name="direccion" style="width:90%;" value="<?php echo $Empl->__GET('direccion'); ?>"  /></td>
+                             <th  >Dirección</th>
+                             <td><input type="text" name="direccion"  value="<?php echo $Empl->__GET('direccion'); ?>"  /></td>
 
                              <th >Teléfono Casa</th>
                              <td><input type="text" name="telefonocasa" value="<?php echo $Empl->__GET('telefonocasa'); ?>" /></td>
@@ -119,39 +118,37 @@ if(isset($_REQUEST['action']))
                            <tr>
                              <th >Sexo</th>
                              <td>
-                                 <select name="sexo" style="width:90%;">
+                                 <select name="sexo" >
                                      <option value="1" <?php echo $Empl->__GET('sexo') == 'M' ? 'selected' : ''; ?>>Masculino</option>
                                      <option value="2" <?php echo $Empl->__GET('sexo') == 'F' ? 'selected' : ''; ?>>Femenino</option>
                                  </select>
                              </td>
 
                              <th></th>
-                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary">Guardar</button></td>
+                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
                          </tr>
 
                      </table>
      </form>
 
-
-<div class="table-content-class">
-
- <table class="pure-table pure-table-horizontal" >
-                  <thead>
+<div >
+ <table class="rwd-table" >
+                  <tbody>
                       <tr>
-                          <th style="text-align:left;">Id</th>
-                          <th style="text-align:left;">Nombre</th>
-                          <th style="text-align:left;">Departamento</th>
-                          <th style="text-align:left;">Puesto</th>
-                          <th style="text-align:left;">FechaIngreso</th>
-                          <th style="text-align:left;">Dirección</th>
-                          <th style="text-align:left;">TelefonoCasa</th>
-                          <th style="text-align:left;">TelefonoMovil</th>
-                          <th style="text-align:left;">Sueldo</th>
-                          <th style="text-align:left;">Sexo</th>
+                          <th style="text-align:center;">Id</th>
+                          <th style="text-align:center;">Nombre</th>
+                          <th style="text-align:center;">Departamento</th>
+                          <th style="text-align:center;">Puesto</th>
+                          <th style="text-align:center;">Fecha Ingreso</th>
+                          <th style="text-align:center;">Dirección</th>
+                          <th style="text-align:center;">Tel. Casa</th>
+                          <th style="text-align:center;">Tel. Móvil</th>
+                          <th style="text-align:center;">Sueldo</th>
+                          <th style="text-align:center;">Sexo</th>
                           <th></th>
                           <th></th>
                       </tr>
-                  </thead>
+
                   <?php foreach($Empl_db->Listar() as $r): ?>
                       <tr>
                           <td><?php echo $r->__GET('id'); ?></td>
@@ -169,15 +166,13 @@ if(isset($_REQUEST['action']))
                               <a href="?action=editar&id=<?php echo $r->id; ?>">Editar</a>
                           </td>
                           <td>
-                              <a href="?action=eliminar&id=<?php echo $r->id; ?>">Eliminar</a>
+                              <a href="?action=eliminar&id=<?php echo $r->id; ?>" onclick="return confirm('¿Seguro que desea eliminar el empleado seleccionado.?')" >Eliminar</a>
                           </td>
                       </tr>
                   <?php endforeach; ?>
+                </tbody>
   </table>
 
-  </div>
-    </div>
-    </div>
     <div class="text-center">
       <a href="../Paginas/Login.php" class="txt2 hov1">
         Cerrar Sesión
@@ -185,6 +180,8 @@ if(isset($_REQUEST['action']))
       <a href="../Paginas/Menu.php" class="txt2 hov1">
         Menu Principal
       </a>
-</div>
+    </div>
+    </div>
+
   </body>
 </html>

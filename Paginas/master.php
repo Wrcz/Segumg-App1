@@ -38,7 +38,7 @@
   <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/main.css";?>>
   <!--===============================================================================================-->
   </head>
-  <body class="container-login100" style="background-image: url('images/bg-01.jpg');">
+  <body class="container-login100" style="background-image: url(<?php echo $BASEURL.'images/bg-01.jpg';?>);">
 
   </body>
   <!--===============================================================================================-->
