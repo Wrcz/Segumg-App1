@@ -1,8 +1,14 @@
 <?php
-     $BASEURL = $_SERVER['PATH_INFO']."/Segumg-App1/"  ;
-     //$BASEURL="/";
+     $ds = DIRECTORY_SEPARATOR;
+     $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+    //require_once("{$base_dir}Db{$ds}DbConnection.php");  //Error Fatal
+//echo phpinfo();
+    //$file = "{$base_dir}Db{$ds}DbConnection.php";
+     //include_once($file);  //Advertencia
 
-     include( $BASEURL . "Db/DbConnection.php");
+    $BASEURL ="/Segumg-App1/" ;
+    //$BASEURL="/";
+
   ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -40,7 +46,7 @@
 
 <body>
 
-	<form name="Frm_Login"action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
+	<form name="Frm_Login"action="" method="post" >
 
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
     		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
