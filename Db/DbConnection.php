@@ -1,4 +1,4 @@
-// PHP Data Objects(PDO) Sample Code:
+
 <?php
 
 // PHP Data Objects(PDO) Sample Code:
@@ -15,5 +15,5 @@ catch (PDOException $e) {
 $connectionInfo = array("UID" => "segumg@segumgdb-php-server", "pwd" => "Guatemala18", "Database" => "sql-php", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:segumgdb-php-server.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-
+  print("conexion establecida.");
 ?>
