@@ -3,8 +3,8 @@
      $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
     //require_once("{$base_dir}Db{$ds}DbConnection.php");  //Error Fatal
 //echo phpinfo();
-    //$file = "{$base_dir}Db{$ds}DbConnection.php";
-     //include_once($file);  //Advertencia
+    $file = "{$base_dir}Db{$ds}DbConnection.php";
+     INclude_once($file);  //Advertencia
 
     //$BASEURL ="/Segumg-App1/" ;
     $BASEURL="/";
