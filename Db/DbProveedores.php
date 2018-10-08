@@ -1,8 +1,8 @@
 <?php
-require_once '../Clases/Empleado_Ent.php';
+require_once '../Clases/Proveedores_Ent.php';
 require_once("../Db/DbConnection.php");
 
-Class Empleados_DB
+Class Proveedores_DB
 {
           //Obtengo todos los empleados
           public function listar(){
@@ -12,7 +12,7 @@ Class Empleados_DB
                   try {
                     if(isset($conn))
                     {
-                    $tsql = "select * from Empleados ";
+                    $tsql = "select * from Proveedores ";
                     $params = array();
                     $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                     $resultado = sqlsrv_query($conn, $tsql,$params,$options);
@@ -20,23 +20,19 @@ Class Empleados_DB
                     if ($resultado == FALSE)
                       die( print_r( sqlsrv_errors(), true));
 
-                      $result;
                         while( $row = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC) )
                         			{
-                        				$Empl = new Empleados();
+                        				$Prov = new Proveedores();
 
-                        				$Empl->__SET('id', $row['CodigoEmpleado']);
-                        				$Empl->__SET('nombre', $row['NombreEmpleado']);
-                        				$Empl->__SET('departamento', $row['Departamento']);
-                        				$Empl->__SET('puesto', $row['Puesto']);
-                        				$Empl->__SET('fechaingreso',$row['FechaIngreso']->format('Y-m-d'));
-                        	       $Empl->__SET('direccion', $row['Direccion']);
-                          	      $Empl->__SET('telefonocasa', $row['TelefonoCasa']);
-                            	     $Empl->__SET('telefonomovil', $row['TelefonoMovil']);
-                              	    $Empl->__SET('sueldo', $row['Sueldo']);
-                                	$Empl->__SET('sexo', $row['Sexo']);
+                        				$Prov->__SET('id', $row['CodigoProveedor']);
+                        				$Prov->__SET('razonsocial', $row['RazonSocial']);
+                        				$Prov->__SET('nit', $row['RegistroTributrario']);
+                        				$Prov->__SET('pais', $row['Pais']);
+                        				$Prov->__SET('direccion',$row['Direccion']);
+                        	       $Prov->__SET('telefono1', $row['Telefono1']);
+                          	      $Prov->__SET('telefono2', $row['Telefono2']);
 
-                        				$result[] = $Empl;
+                        				$result[] = $Prov;
                         			}
 
                               sqlsrv_free_stmt($resultado);
@@ -60,7 +56,7 @@ Class Empleados_DB
                         if(isset($conn))
                         {
 
-                        $tsql = "select * from Empleados where codigoempleado=?";
+                        $tsql = "select * from proveedores where CodigoProveedor=?";
                         $params = array($id);
                         $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                         $resultado = sqlsrv_query($conn, $tsql,$params,$options);
@@ -71,24 +67,22 @@ Class Empleados_DB
                            $row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC);
                             $contador = sqlsrv_num_rows($resultado);
 
-                           $Empl = new Empleados();
+                           $Prov = new Proveedores();
                              if ($contador>0)
                              {
-                                    $Empl->__SET('id', $row['CodigoEmpleado']);
-                                    $Empl->__SET('nombre', $row['NombreEmpleado']);
-                                    $Empl->__SET('departamento', $row['Departamento']);
-                                    $Empl->__SET('puesto', $row['Puesto']);
-                                    $Empl->__SET('fechaingreso',$row['FechaIngreso']->format('Y-m-d'));
-                                     $Empl->__SET('direccion', $row['Direccion']);
-                                      $Empl->__SET('telefonocasa', $row['TelefonoCasa']);
-                                       $Empl->__SET('telefonomovil', $row['TelefonoMovil']);
-                                        $Empl->__SET('sueldo', $row['Sueldo']);
-                                      $Empl->__SET('sexo', $row['Sexo']);
+                               $Prov->__SET('id', $row['CodigoProveedor']);
+                               $Prov->__SET('razonsocial', $row['RazonSocial']);
+                               $Prov->__SET('nit', $row['RegistroTributrario']);
+                               $Prov->__SET('pais', $row['Pais']);
+                               $Prov->__SET('direccion',$row['Direccion']);
+                                $Prov->__SET('telefono1', $row['Telefono1']);
+                                 $Prov->__SET('telefono2', $row['Telefono2']);
+
                                   }
 
                                   sqlsrv_free_stmt($resultado);
                                     sqlsrv_close($conn);
-                                  return $Empl;
+                                  return $Prov;
                     }}
 
                          catch (\Exception $e)
@@ -106,7 +100,7 @@ Class Empleados_DB
                             if(isset($conn))
                             {
 
-                            $tsql = "delete from Empleados where codigoempleado=?";
+                            $tsql = "delete from proveedores where codigoproveedor=?";
                             $params = array($id);
                             $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
                             $resultado = sqlsrv_query($conn, $tsql,$params,$options);
@@ -125,7 +119,7 @@ Class Empleados_DB
                       }
 
 
-                      public function actualizar(Empleados $Emp){
+                      public function actualizar(Proveedores $Prov){
                         $Cls_Conn= new Conexion();
                         $conn=$Cls_Conn->DevuelveConexion();
 
@@ -134,8 +128,8 @@ Class Empleados_DB
                                 if(isset($conn))
                                 {
 
-                                $tsql = "Update Empleados set nombreempleado=?,departamento=?,puesto=?,fechaingreso=?,direccion=?,telefonocasa=?,telefonomovil=?,sueldo=?  where codigoempleado=?";
-                                $params = array($Emp->__Get('nombre'),$Emp->__Get('departamento'),$Emp->__Get('puesto'),$Emp->__Get('fechaingreso'),$Emp->__Get('direccion'),$Emp->__Get('telefonocasa'),$Emp->__Get('telefonomovil'),$Emp->__Get('sueldo'),$Emp->__Get('sexo'),$Emp->__Get('id'));
+                                $tsql = "Update proveedores set RazonSocial=?,RegistroTributrario=?,Pais=?,Direccion=?,Telefono1=?,Telefono2=?  where CodigoProveedor=?";
+                                $params = array($Prov->__Get('razonsocial'),$Prov->__Get('nit'),$Prov->__Get('pais'),$Prov->__Get('direccion'),$Prov->__Get('telefono1'),$Prov->__Get('telefono2'),$Prov->__Get('id'));
                                 $resultado = sqlsrv_query($conn, $tsql,$params);
 
                                 if ($resultado == FALSE)
@@ -153,7 +147,7 @@ Class Empleados_DB
                           }
 
 
-                          public function registrar(Empleados $Emp){
+                          public function registrar(Proveedores $Prov){
                             $Cls_Conn= new Conexion();
                             $conn=$Cls_Conn->DevuelveConexion();
 
@@ -162,8 +156,8 @@ Class Empleados_DB
                                     if(isset($conn))
                                     {
 
-                                    $tsql = "insert into  Empleados (NombreEmpleado, Departamento, Puesto, FechaIngreso, Direccion, TelefonoCasa, TelefonoMovil, Sueldo, Sexo) values (?,?,?,?,?,?,?,?,?)";
-                                    $params = array($Emp->__Get('nombre'),$Emp->__Get('departamento'),$Emp->__Get('puesto'),$Emp->__Get('fechaingreso'),$Emp->__Get('direccion'),$Emp->__Get('telefonocasa'),$Emp->__Get('telefonomovil'),$Emp->__Get('sueldo'),$Emp->__Get('sexo'));
+                                    $tsql = "insert into  proveedores (RazonSocial, RegistroTributrario, Pais, Direccion, Telefono1, Telefono2) values (?,?,?,?,?,?)";
+                                    $params = array($Prov->__Get('razonsocial'),$Prov->__Get('nit'),$Prov->__Get('pais'),$Prov->__Get('direccion'),$Prov->__Get('telefono1'),$Prov->__Get('telefono2'));
                                     $resultado = sqlsrv_query($conn, $tsql,$params);
 
                                     if ($resultado == FALSE)

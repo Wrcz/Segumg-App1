@@ -39,6 +39,15 @@ if(isset($_REQUEST['action']))
       $Empl->__SET('sueldo', $_REQUEST['sueldo']);
       $Empl->__SET('sexo', $_REQUEST['sexo']);
 
+
+      if (strlen($_REQUEST['nombre'])==0 || strlen($_REQUEST['departamento'])==0 ||
+      strlen($_REQUEST['puesto'])==0 || strlen($_REQUEST['sueldo'])==0 )
+      {
+        echo '<script language="javascript">';
+        echo 'alert("Debe ingresar información en los campos: nombre, departamento, puesto o sueldo.")';
+        echo '</script>';
+        break;
+      }
 			$Empl_db->Actualizar($Empl);
 			header('Location: Empleados.php');
 			break;
@@ -53,6 +62,15 @@ if(isset($_REQUEST['action']))
     $Empl->__SET('telefonomovil', $_REQUEST['telefonomovil']);
     $Empl->__SET('sueldo', $_REQUEST['sueldo']);
     $Empl->__SET('sexo', $_REQUEST['sexo']);
+
+    if (strlen($_REQUEST['nombre'])==0 || strlen($_REQUEST['departamento'])==0 ||
+    strlen($_REQUEST['puesto'])==0 || strlen($_REQUEST['sueldo'])==0 )
+    {
+      echo '<script language="javascript">';
+      echo 'alert("Debe ingresar información en los campos: nombre, departamento, puesto o sueldo.")';
+      echo '</script>';
+      break;
+    }
 
 			$Empl_db->registrar($Empl);
 			header('Location: Empleados.php');
@@ -126,6 +144,9 @@ if(isset($_REQUEST['action']))
 
                              <th></th>
                              <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
+                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" >
+                               <a href="../Paginas/Empleados.php" style="color:white;font-weight: bold;">Refrescar </a></button></td>
+
                          </tr>
 
                      </table>

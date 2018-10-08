@@ -1,6 +1,6 @@
 
 <?php
-  include("master.php");
+
 // Inicializar la sesión.
 // Si está usando session_name("algo"), ¡no lo olvide ahora!
 session_start();
@@ -27,7 +27,7 @@ session_destroy();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Inicio de Sesión -DEV </title>
+  <title>Inicio de Sesión </title>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
 
@@ -35,9 +35,9 @@ session_destroy();
 </head>
 
 <body>
-
+<?php  include("master.php"); ?>
 	<form name="Frm_Login"action="../Db/DbUsuarios.php" method="post" >
-    
+
     		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 
     			<form class="login100-form validate-form">
