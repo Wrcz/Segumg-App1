@@ -94,6 +94,7 @@ if(isset($_REQUEST['action']))
 </head>
 <body >
    <?php include("master.php"); ?>
+   <span class="login100-form-title p-b-37"> Mantenimiento de Proveedores </span>
    <form  action="?action=<?php echo $Prov->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post"  style="margin-bottom:10px;">
                      <input type="hidden" name="id" value="<?php echo $Prov->__GET('id'); ?>" />
 

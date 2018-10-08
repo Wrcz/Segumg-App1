@@ -144,9 +144,7 @@ if(isset($_REQUEST['action']))
 
                              <th></th>
                              <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
-                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" >
-                               <a href="../Paginas/Empleados.php" style="color:white;font-weight: bold;">Refrescar </a></button></td>
-
+                            
                          </tr>
 
                      </table>
