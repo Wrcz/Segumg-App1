@@ -1,5 +1,5 @@
 <?php
-$BASEURL="../";
+$BASEURL="../ResponsiveT_1/";
 
 require_once '../Clases/Empleado_Ent.php';
 require_once '../Db/DbEmpleados.php';
@@ -89,118 +89,146 @@ if(isset($_REQUEST['action']))
  ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html >
   <head>
     <meta charset="utf-8">
     <title>Mantenimiento de Empleados</title>
-     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 
-      <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/responsivetables2.css";?>>
-       <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href=<?php echo $BASEURL ."images/icons/favicon.ico";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL. "vendor/bootstrap/css/bootstrap.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."fonts/font-awesome-4.7.0/css/font-awesome.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/animate/animate.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/select2/select2.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/perfect-scrollbar/perfect-scrollbar.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/util.css";?>>
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/main.css";?>>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body >
-<?php include("master.php"); ?>
-<span class="login100-form-title p-b-37"> Mantenimiento de Empleados </span>
 
-   <form  action="?action=<?php echo $Empl->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post"  style="margin-bottom:10px;">
-                     <input type="hidden" name="id" value="<?php echo $Empl->__GET('id'); ?>" />
+<div class="limiter">
+<div class="container-table100">
+   <form  action="?action=<?php echo $Empl->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post" >
+      <input type="hidden" name="id" value="<?php echo $Empl->__GET('id'); ?>" />
 
-                     <table class="rwd-table" >
-                         <tr>
-                             <th >Nombre</th>
-                             <td><input type="text" name="nombre"   value="<?php echo $Empl->__GET('nombre'); ?>" /></td>
 
-                             <th >Departamento</th>
-                             <td><input type="text" name="departamento" value="<?php echo $Empl->__GET('departamento'); ?>"  /></td>
+       <div class="wrap-table100">
+         <div class="table100">
 
-                             <th >Puesto</th>
-                             <td><input type="text" name="puesto" value="<?php echo $Empl->__GET('puesto'); ?>" /></td>
+           <div class="text-center">
+             <label  style="color:white;font-size:25px;" >
+               Mantenimiento de Empleados
+             </label>
+           </div>
 
-                             <th >Fecha Ingreso</th>
-                             <td><input type="text" name="fechaingreso"  value="<?php echo $Empl->__GET('fechaingreso'); ?>"  /></td>
-                           </tr>
-                           <tr>
-                             <th  >Dirección</th>
-                             <td><input type="text" name="direccion"  value="<?php echo $Empl->__GET('direccion'); ?>"  /></td>
-
-                             <th >Teléfono Casa</th>
-                             <td><input type="text" name="telefonocasa" value="<?php echo $Empl->__GET('telefonocasa'); ?>" /></td>
-
-                             <th >Teléfono Móvil</th>
-                             <td><input type="text" name="telefonomovil" value="<?php echo $Empl->__GET('telefonomovil'); ?>" /></td>
-
-                             <th >Sueldo</th>
-                             <td><input type="text" name="sueldo" value="<?php echo $Empl->__GET('sueldo'); ?>" /></td>
-
-                           </tr>
-                           <tr>
-                             <th >Sexo</th>
-                             <td>
+                     <table>
+                        <thead>
+                          <tr class="table100-head">
+                              <th class="column3" style="width:100%;">Nombre</th>
+                              <th class="column3" style="width:160px;">Departamento</th>
+                              <th class="column3" style="width:160px;">Puesto</th>
+                              <th class="column3" style="width:100px;">Fecha Ingreso</th>
+                              <th class="column3" style="width:160px;">Dirección</th>
+                              <th class="column3" style="width:80px;">Tel. Casa</th>
+                              <th class="column3" style="width:80px;">Tel. Móvil</th>
+                              <th class="column3" style="width:80px;">Sueldo</th>
+                              <th class="column3" style="width:80px;">Sexo</th>
+                              <th class="column3"></th>
+                          </tr>
+                        </thead>
+                          <tbody>
+                          <tr>
+                             <td class="column3"><input type="text" name="nombre" style="width:150px;"   value="<?php echo trim($Empl->__GET('nombre'),""); ?>"  /></td>
+                             <td class="column3"><input type="text" name="departamento"  style="width:160px;" value="<?php echo $Empl->__GET('departamento'); ?>"  /></td>
+                             <td class="column3"><input type="text" name="puesto"  style="width:160px;"  value="<?php echo $Empl->__GET('puesto'); ?>" /></td>
+                             <td class="column3"><input type="text" name="fechaingreso"   style="width:75px;"  value="<?php echo $Empl->__GET('fechaingreso'); ?>"  /></td>
+                             <td class="column3"><input type="text" name="direccion"   style="width:120px;"  value="<?php echo $Empl->__GET('direccion'); ?>"   /></td>
+                             <td class="column3"> <input type="text" name="telefonocasa"  style="width:80px;"  value="<?php echo $Empl->__GET('telefonocasa'); ?>"  /></td>
+                             <td class="column3"><input type="text" name="telefonomovil"  style="width:80px;"  value="<?php echo $Empl->__GET('telefonomovil'); ?>"  /></td>
+                             <td class="column3"><input type="text" name="sueldo"  style="width:80px;"  value="<?php echo $Empl->__GET('sueldo'); ?>" /></td>
+                             <td class="column3"style="width:80px;">
                                  <select name="sexo" >
-                                     <option value="1" <?php echo $Empl->__GET('sexo') == 'M' ? 'selected' : ''; ?>>Masculino</option>
-                                     <option value="2" <?php echo $Empl->__GET('sexo') == 'F' ? 'selected' : ''; ?>>Femenino</option>
+                                     <option value="1" <?php echo $Empl->__GET('sexo') == 'M' ? 'selected' : ''; ?>>M</option>
+                                     <option value="2" <?php echo $Empl->__GET('sexo') == 'F' ? 'selected' : ''; ?>>F</option>
                                  </select>
                              </td>
-
-                             <th></th>
-                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
-                            
+                             <td class="column3"><button  type="submit"  onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
                          </tr>
-
+                      </tbody>
                      </table>
+                   </div>
+                   </div>
+                
      </form>
 
-<div >
- <table class="rwd-table" >
-                  <tbody>
-                      <tr>
-                          <th style="text-align:center;">Id</th>
-                          <th style="text-align:center;">Nombre</th>
-                          <th style="text-align:center;">Departamento</th>
-                          <th style="text-align:center;">Puesto</th>
-                          <th style="text-align:center;">Fecha Ingreso</th>
-                          <th style="text-align:center;">Dirección</th>
-                          <th style="text-align:center;">Tel. Casa</th>
-                          <th style="text-align:center;">Tel. Móvil</th>
-                          <th style="text-align:center;">Sueldo</th>
-                          <th style="text-align:center;">Sexo</th>
-                          <th></th>
-                          <th></th>
-                      </tr>
+     <div class="wrap-table100">
+         <div class="table100">
+  <table  >
+                 <thead>
+                       <tr class="table100-head">
+                           <th class="column7">Id</th>
+                           <th class="column7">Nombre</th>
+                           <th class="column7">Departamento</th>
+                           <th class="column7">Puesto</th>
+                           <th class="column7">Fecha Ingreso</th>
+                           <th class="column7">Dirección</th>
+                           <th class="column7">Tel. Casa</th>
+                           <th class="column7">Tel. Móvil</th>
+                           <th class="column7">Sueldo</th>
+                           <th class="column7">Sexo</th>
+                           <th class="column7"></th>
+                           <th class="column7"></th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                   <?php foreach($Empl_db->Listar() as $r): ?>
+                       <tr >
+                           <td class="column7" ><?php echo $r->__GET('id'); ?></td>
+                           <td class="column7" ><?php echo $r->__GET('nombre'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('departamento'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('puesto'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('fechaingreso'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('direccion'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('telefonocasa'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('telefonomovil'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('sueldo'); ?></td>
+                           <td class="column7"><?php echo $r->__GET('sexo') == 'M' ? 'M' : 'F'; ?></td>
+                           <td class="column7">
+                               <a href="?action=editar&id=<?php echo $r->id; ?>">Editar </a>
+                           </td>
+                           <td class="column7">
+                               <a href="?action=eliminar&id=<?php echo $r->id; ?>" onclick="return confirm('¿Seguro que desea eliminar el empleado seleccionado.?')" >Eliminar</a>
+                           </td>
+                       </tr>
+                   <?php endforeach; ?>
+                 </tbody>
+   </table>
+   <div class="text-center">
+     <a href="../Paginas/Login.php"  style="color:white;" >
+       Cerrar Sesión
+     </a> &nbsp;
+     <a href="../Paginas/Menu.php"  style="color:white;">
+       Menu Principal
+     </a>
+   </div>
 
-                  <?php foreach($Empl_db->Listar() as $r): ?>
-                      <tr>
-                          <td><?php echo $r->__GET('id'); ?></td>
-                          <td><?php echo $r->__GET('nombre'); ?></td>
-                          <td><?php echo $r->__GET('departamento'); ?></td>
-                          <td><?php echo $r->__GET('puesto'); ?></td>
-                          <td><?php echo $r->__GET('fechaingreso'); ?></td>
-                          <td><?php echo $r->__GET('direccion'); ?></td>
-                          <td><?php echo $r->__GET('telefonocasa'); ?></td>
-                          <td><?php echo $r->__GET('telefonomovil'); ?></td>
-                          <td><?php echo $r->__GET('sueldo'); ?></td>
-                          <td><?php echo $r->__GET('sexo') == 'M' ? 'M' : 'F'; ?></td>
+ </div>
+ </div>
+</div>
+</div>
 
-                          <td>
-                              <a href="?action=editar&id=<?php echo $r->id; ?>">Editar</a>
-                          </td>
-                          <td>
-                              <a href="?action=eliminar&id=<?php echo $r->id; ?>" onclick="return confirm('¿Seguro que desea eliminar el empleado seleccionado.?')" >Eliminar</a>
-                          </td>
-                      </tr>
-                  <?php endforeach; ?>
-                </tbody>
-  </table>
-
-    <div class="text-center">
-      <a href="../Paginas/Login.php" class="txt2 hov1">
-        Cerrar Sesión
-      </a> &nbsp;
-      <a href="../Paginas/Menu.php" class="txt2 hov1">
-        Menu Principal
-      </a>
-    </div>
-    </div>
-
+    <!--===============================================================================================-->
+      <script src=<?php echo $BASEURL."vendor/jquery/jquery-3.2.1.min.js";?>></script>
+      <!--===============================================================================================-->
+        <script src=<?php echo $BASEURL."vendor/bootstrap/js/popper.js";?>></script>
+        <script src=<?php echo $BASEURL."vendor/bootstrap/js/bootstrap.min.js";?>></script>
+        <!--===============================================================================================-->
+          <script src=<?php echo $BASEURL."vendor/select2/select2.min.js";?>></script>
   </body>
 </html>

@@ -1,7 +1,5 @@
 <?php
-
-$BASEURL="../";
-
+$BASEURL="../ResponsiveT_1/";
 require_once '../Clases/Proveedores_Ent.php';
 require_once '../Db/DbProveedores.php';
 
@@ -87,72 +85,96 @@ if(isset($_REQUEST['action']))
   <head>
     <meta charset="utf-8">
     <title>Mantenimiento de Proveedores</title>
-     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-
-      <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/responsivetables2.css";?>>
+    <link rel="icon" type="image/png" href=<?php echo $BASEURL ."images/icons/favicon.ico";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL. "vendor/bootstrap/css/bootstrap.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."fonts/font-awesome-4.7.0/css/font-awesome.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/animate/animate.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/select2/select2.min.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/perfect-scrollbar/perfect-scrollbar.css";?>>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/util.css";?>>
+    <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/main.css";?>>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
        <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body >
-   <?php include("master.php"); ?>
-   <span class="login100-form-title p-b-37"> Mantenimiento de Proveedores </span>
-   <form  action="?action=<?php echo $Prov->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post"  style="margin-bottom:10px;">
+
+   <div class="limiter">
+   <div class="container-table100">
+
+   <form  action="?action=<?php echo $Prov->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post"  >
                      <input type="hidden" name="id" value="<?php echo $Prov->__GET('id'); ?>" />
 
-                     <table class="rwd-table" >
-                         <tr>
-                             <th >Razon Social</th>
+                     <div class="wrap-table100">
+                       <div class="table100">
+
+                         <div class="text-center">
+                           <label  style="color:white;font-size:25px;" >
+                             Mantenimiento de Proveedores
+                           </label>
+                         </div>
+                     <table >
+                       <thead>
+                         <tr class="table100-head">
+                             <th class="column3" >Razon Social</th>
+                             <th class="column3">Registro Tributario</th>
+                             <th class="column3">Pais</th>
+                             <th class="column3">Dirección</th>
+                             <th class="column3">Teléfono 1</th>
+                             <th class="column3">Teléfono 2</th>
+                             <th class="column3"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
                              <td><input type="text" name="razonsocial"   value="<?php echo $Prov->__GET('razonsocial'); ?>" /></td>
-
-                             <th >Registro Tributario</th>
                              <td><input type="text" name="nit" value="<?php echo $Prov->__GET('nit'); ?>"  /></td>
-
-                             <th >Pais</th>
                              <td><input type="text" name="pais" value="<?php echo $Prov->__GET('pais'); ?>" /></td>
-
-                             <th >Dirección</th>
                              <td><input type="text" name="direccion"  value="<?php echo $Prov->__GET('direccion'); ?>"  /></td>
-                           </tr>
-                           <tr>
-                             <th  >Teléfono 1</th>
                              <td><input type="text" name="telefono1"  value="<?php echo $Prov->__GET('telefono2'); ?>"  /></td>
-
-                             <th >Teléfono 2</th>
                              <td><input type="text" name="telefono2" value="<?php echo $Prov->__GET('telefono2'); ?>" /></td>
-
-                             <td><button style="width:100%;" type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
+                             <td><button  type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
                          </tr>
                      </table>
+                   </div>
+                   </div>
      </form>
 
- <table class="rwd-table" >
-                  <tbody>
-                      <tr>
-                          <th style="text-align:center;">Id</th>
-                          <th style="text-align:center;">Razon Social</th>
-                          <th style="text-align:center;">Registro Trib.</th>
-                          <th style="text-align:center;">Pais</th>
-                          <th style="text-align:center;">Dirección</th>
-                          <th style="text-align:center;">Teléfono 1</th>
-                          <th style="text-align:center;">Teléfono 2</th>
-
-
-                          <th></th>
-                          <th></th>
+     <div class="wrap-table100">
+         <div class="table100">
+ <table >
+                  <thead>
+                      <tr  class="table100-head">
+                          <th class="column7" >Id</th>
+                          <th class="column7" >Razon Social</th>
+                          <th class="column7" >Registro Trib.</th>
+                          <th class="column7" >Pais</th>
+                          <th class="column7" >Dirección</th>
+                          <th class="column7" >Teléfono 1</th>
+                          <th class="column7">Teléfono 2</th>
+                          <th class="column7"></th>
+                          <th class="column7"></th>
                       </tr>
-
+                    </thead>
+<tbody>
                   <?php foreach($Prov_db->Listar() as $r): ?>
                       <tr>
-                          <td><?php echo $r->__GET('id'); ?></td>
-                          <td><?php echo $r->__GET('razonsocial'); ?></td>
-                          <td><?php echo $r->__GET('nit'); ?></td>
-                          <td><?php echo $r->__GET('pais'); ?></td>
-                          <td><?php echo $r->__GET('direccion'); ?></td>
-                          <td><?php echo $r->__GET('telefono1'); ?></td>
-                          <td><?php echo $r->__GET('telefono2'); ?></td>
-                          <td>
+                          <td class="column7" ><?php echo $r->__GET('id'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('razonsocial'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('nit'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('pais'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('direccion'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('telefono1'); ?></td>
+                          <td class="column7" ><?php echo $r->__GET('telefono2'); ?></td>
+                          <td class="column7" >
                               <a href="?action=editar&id=<?php echo $r->id; ?>">Editar</a>
                           </td>
-                          <td>
+                          <td class="column7" >
                               <a href="?action=eliminar&id=<?php echo $r->id; ?>" onclick="return confirm('¿Seguro que desea eliminar el proveedor seleccionado.?')" >Eliminar</a>
                           </td>
                       </tr>
@@ -161,14 +183,26 @@ if(isset($_REQUEST['action']))
   </table>
 
     <div class="text-center">
-      <a href="../Paginas/Login.php" class="txt2 hov1">
+      <a href="../Paginas/Login.php" style="color:white;">
         Cerrar Sesión
       </a> &nbsp;
-      <a href="../Paginas/Menu.php" class="txt2 hov1">
+      <a href="../Paginas/Menu.php" style="color:white;">
         Menu Principal
       </a>
     </div>
 
+  </div>
+  </div>
+ </div>
+ </div>
+
+ <!--===============================================================================================-->
+   <script src=<?php echo $BASEURL."vendor/jquery/jquery-3.2.1.min.js";?>></script>
+   <!--===============================================================================================-->
+     <script src=<?php echo $BASEURL."vendor/bootstrap/js/popper.js";?>></script>
+     <script src=<?php echo $BASEURL."vendor/bootstrap/js/bootstrap.min.js";?>></script>
+     <!--===============================================================================================-->
+       <script src=<?php echo $BASEURL."vendor/select2/select2.min.js";?>></script>
 
   </body>
 </html>

@@ -34,6 +34,8 @@
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/daterangepicker/daterangepicker.css";?>>
   <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."vendor/perfect-scrollbar/perfect-scrollbar.css";?>>
+  <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/util.css";?>>
   <link rel="stylesheet" type="text/css" href=<?php echo $BASEURL."css/main.css";?>>
   <!--===============================================================================================-->
