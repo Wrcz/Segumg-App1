@@ -1,4 +1,5 @@
 <?php
+
 $BASEURL="../ResponsiveT_1/";
 require_once '../Clases/Proveedores_Ent.php';
 require_once '../Db/DbProveedores.php';
@@ -132,12 +133,12 @@ if(isset($_REQUEST['action']))
                         </thead>
                         <tbody>
                           <tr>
-                             <td><input type="text" name="razonsocial"   value="<?php echo $Prov->__GET('razonsocial'); ?>" /></td>
-                             <td><input type="text" name="nit" value="<?php echo $Prov->__GET('nit'); ?>"  /></td>
-                             <td><input type="text" name="pais" value="<?php echo $Prov->__GET('pais'); ?>" /></td>
-                             <td><input type="text" name="direccion"  value="<?php echo $Prov->__GET('direccion'); ?>"  /></td>
-                             <td><input type="text" name="telefono1"  value="<?php echo $Prov->__GET('telefono2'); ?>"  /></td>
-                             <td><input type="text" name="telefono2" value="<?php echo $Prov->__GET('telefono2'); ?>" /></td>
+                             <td><input type="text" name="razonsocial"   value="<?php echo strip_tags($Prov->__GET('razonsocial')); ?>" /></td>
+                             <td><input type="text" name="nit" value="<?php echo  strip_tags($Prov->__GET('nit')); ?>"  /></td>
+                             <td><input type="text" name="pais" value="<?php echo  strip_tags($Prov->__GET('pais')); ?>" /></td>
+                             <td><input type="text" name="direccion"  value="<?php echo  strip_tags($Prov->__GET('direccion')); ?>"  /></td>
+                             <td><input type="text" name="telefono1"  value="<?php echo  strip_tags($Prov->__GET('telefono2')); ?>"  /></td>
+                             <td><input type="text" name="telefono2" value="<?php echo  strip_tags($Prov->__GET('telefono2')); ?>" /></td>
                              <td><button  type="submit" class="pure-button pure-button-primary" onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
                          </tr>
                      </table>
@@ -164,18 +165,18 @@ if(isset($_REQUEST['action']))
 <tbody>
                   <?php foreach($Prov_db->Listar() as $r): ?>
                       <tr>
-                          <td class="column7" ><?php echo $r->__GET('id'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('razonsocial'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('nit'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('pais'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('direccion'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('telefono1'); ?></td>
-                          <td class="column7" ><?php echo $r->__GET('telefono2'); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('id')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('razonsocial')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('nit')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('pais')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('direccion')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('telefono1')); ?></td>
+                          <td class="column7" ><?php echo  strip_tags($r->__GET('telefono2')); ?></td>
                           <td class="column7" >
-                              <a href="?action=editar&id=<?php echo $r->id; ?>">Editar</a>
+                              <a href="?action=editar&id=<?php echo  strip_tags($r->id); ?>">Editar</a>
                           </td>
                           <td class="column7" >
-                              <a href="?action=eliminar&id=<?php echo $r->id; ?>" onclick="return confirm('¿Seguro que desea eliminar el proveedor seleccionado.?')" >Eliminar</a>
+                              <a href="?action=eliminar&id=<?php echo  strip_tags($r->id); ?>" onclick="return confirm('¿Seguro que desea eliminar el proveedor seleccionado.?')" >Eliminar</a>
                           </td>
                       </tr>
                   <?php endforeach; ?>
