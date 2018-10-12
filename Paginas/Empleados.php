@@ -115,7 +115,7 @@ if(isset($_REQUEST['action']))
 <div class="limiter">
 <div class="container-table100">
    <form  action="?action=<?php echo $Empl->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post" >
-      <input type="hidden" name="id" value="<?php echo  strip_tags($Empl->__GET('id')); ?>" />
+      <input type="hidden" name="id" value="<?php echo  htmlentities($Empl->__GET('id')); ?>" />
 
 
        <div class="wrap-table100">
@@ -144,18 +144,18 @@ if(isset($_REQUEST['action']))
                         </thead>
                           <tbody>
                           <tr>
-                             <td class="column3"><input type="text" name="nombre" style="width:150px;"   value="<?php echo  strip_tags(trim($Empl->__GET('nombre'),"")); ?>"  /></td>
-                             <td class="column3"><input type="text" name="departamento"  style="width:160px;" value="<?php echo  strip_tags($Empl->__GET('departamento')); ?>"  /></td>
-                             <td class="column3"><input type="text" name="puesto"  style="width:160px;"  value="<?php echo  strip_tags($Empl->__GET('puesto')); ?>" /></td>
-                             <td class="column3"><input type="text" name="fechaingreso"   style="width:75px;"  value="<?php echo  strip_tags($Empl->__GET('fechaingreso')); ?>"  /></td>
-                             <td class="column3"><input type="text" name="direccion"   style="width:120px;"  value="<?php echo  strip_tags($Empl->__GET('direccion')); ?>"   /></td>
-                             <td class="column3"> <input type="text" name="telefonocasa"  style="width:80px;"  value="<?php echo  strip_tags($Empl->__GET('telefonocasa')); ?>"  /></td>
-                             <td class="column3"><input type="text" name="telefonomovil"  style="width:80px;"  value="<?php echo  strip_tags($Empl->__GET('telefonomovil')); ?>"  /></td>
-                             <td class="column3"><input type="text" name="sueldo"  style="width:80px;"  value="<?php echo  strip_tags($Empl->__GET('sueldo')); ?>" /></td>
+                             <td class="column3"><input type="text" name="nombre" style="width:150px;"   value="<?php echo  htmlentities(trim($Empl->__GET('nombre'),"")); ?>"  /></td>
+                             <td class="column3"><input type="text" name="departamento"  style="width:160px;" value="<?php echo  htmlentities($Empl->__GET('departamento')); ?>"  /></td>
+                             <td class="column3"><input type="text" name="puesto"  style="width:160px;"  value="<?php echo  htmlentities($Empl->__GET('puesto')); ?>" /></td>
+                             <td class="column3"><input type="text" name="fechaingreso"   style="width:75px;"  value="<?php echo  htmlentities($Empl->__GET('fechaingreso')); ?>"  /></td>
+                             <td class="column3"><input type="text" name="direccion"   style="width:120px;"  value="<?php echo  htmlentities($Empl->__GET('direccion')); ?>"   /></td>
+                             <td class="column3"> <input type="text" name="telefonocasa"  style="width:80px;"  value="<?php echo  htmlentities($Empl->__GET('telefonocasa')); ?>"  /></td>
+                             <td class="column3"><input type="text" name="telefonomovil"  style="width:80px;"  value="<?php echo  htmlentities($Empl->__GET('telefonomovil')); ?>"  /></td>
+                             <td class="column3"><input type="text" name="sueldo"  style="width:80px;"  value="<?php echo  htmlentities($Empl->__GET('sueldo')); ?>" /></td>
                              <td class="column3"style="width:80px;">
                                  <select name="sexo" >
-                                     <option value="1" <?php echo  strip_tags($Empl->__GET('sexo')) == 'M' ? 'selected' : ''; ?>>M</option>
-                                     <option value="2" <?php echo  strip_tags($Empl->__GET('sexo')) == 'F' ? 'selected' : ''; ?>>F</option>
+                                     <option value="1" <?php echo  htmlentities($Empl->__GET('sexo')) == 'M' ? 'selected' : ''; ?>>M</option>
+                                     <option value="2" <?php echo  htmlentities($Empl->__GET('sexo')) == 'F' ? 'selected' : ''; ?>>F</option>
                                  </select>
                              </td>
                              <td class="column3"><button  type="submit"  onclick="return confirm('¿Seguro que desea modificar los datos.?')">Guardar</button></td>
@@ -189,21 +189,21 @@ if(isset($_REQUEST['action']))
                      <tbody>
                    <?php foreach($Empl_db->Listar() as $r): ?>
                        <tr >
-                           <td class="column7" ><?php echo  strip_tags($r->__GET('id')); ?></td>
-                           <td class="column7" ><?php echo  strip_tags($r->__GET('nombre')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('departamento')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('puesto')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('fechaingreso')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('direccion')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('telefonocasa')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('telefonomovil')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('sueldo')); ?></td>
-                           <td class="column7"><?php echo  strip_tags($r->__GET('sexo')) == 'M' ? 'M' : 'F'; ?></td>
+                           <td class="column7" ><?php echo  htmlentities($r->__GET('id')); ?></td>
+                           <td class="column7" ><?php echo  htmlentities($r->__GET('nombre')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('departamento')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('puesto')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('fechaingreso')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('direccion')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('telefonocasa')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('telefonomovil')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('sueldo')); ?></td>
+                           <td class="column7"><?php echo  htmlentities($r->__GET('sexo')) == 'M' ? 'M' : 'F'; ?></td>
                            <td class="column7">
-                               <a href="?action=editar&id=<?php echo  strip_tags($r->id); ?>">Editar </a>
+                               <a href="?action=editar&id=<?php echo  htmlentities($r->id); ?>">Editar </a>
                            </td>
                            <td class="column7">
-                               <a href="?action=eliminar&id=<?php echo  strip_tags($r->id); ?>" onclick="return confirm('¿Seguro que desea eliminar el empleado seleccionado.?')" >Eliminar</a>
+                               <a href="?action=eliminar&id=<?php echo  htmlentities($r->id); ?>" onclick="return confirm('¿Seguro que desea eliminar el empleado seleccionado.?')" >Eliminar</a>
                            </td>
                        </tr>
                    <?php endforeach; ?>
