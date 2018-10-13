@@ -1,4 +1,5 @@
 <?php
+ header('X-Frame-Options: DENY');
     $BASEURL="../";
      $ds = DIRECTORY_SEPARATOR;
      $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;

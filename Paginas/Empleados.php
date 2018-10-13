@@ -1,4 +1,5 @@
 <?php
+ header('X-Frame-Options: DENY');
 $BASEURL="../ResponsiveT_1/";
 
 require_once '../Clases/Empleado_Ent.php';

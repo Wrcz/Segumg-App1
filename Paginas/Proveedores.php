@@ -1,5 +1,5 @@
 <?php
-
+ header('X-Frame-Options: DENY');
 $BASEURL="../ResponsiveT_1/";
 require_once '../Clases/Proveedores_Ent.php';
 require_once '../Db/DbProveedores.php';
