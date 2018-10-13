@@ -30,7 +30,7 @@ session_destroy();
   <title>Inicio de Sesión </title>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
-
+<meta http-equiv="X-Frame-Options" content="deny">
 
 </head>
 
